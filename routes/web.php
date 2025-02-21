@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\PhotoController; 
 
 
@@ -19,6 +20,14 @@ use App\Http\Controllers\PhotoController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/greeting', [WelcomeController::class, 
+'greeting']); 
+
+
+// Route::get('/greeting', function () {  	
+//     return view('blog.hello', ['name' => 'Dhevina']); 
+// }); 
 
 Route::get('/', HomeController::class);
 
@@ -35,6 +44,8 @@ Route::resource('photos', PhotoController::class)->only([
 Route::resource('photos', PhotoController::class)->except([ 
     'create', 'store', 'update', 'destroy' ]); 
 
+
+    
 
 // Route::get('/', [PageController::class, 'index']);
 // Route::get('/about', [PageController::class, 'about']);
